@@ -1,3 +1,10 @@
-<h2>Total number of otems returned<%= @foods_total_hits %><h2>
+<h2>Total number of items returned <%= @foods_total_hits %><h2>
 
-<h2>
+<h2>List of 10 foods that contain the ingredient <%= params[:q] %></h2>
+
+<% @foods.each do |food| %>
+  <p>GTIN/UPC Code:<%= food.code %></p>
+  <p>Description:<%= food.description %></p>
+  <p>Brand Owner:<%= food.brand %></p>
+  <p>Ingredients:<%= food.ingredients %>
+<% end %>

@@ -27,14 +27,15 @@ RSpec.describe "Search", type: :feature do
 
     # Dream Drive
 
-    expect(page).to have_content("Total number of items returned __")
+    expect(page).to have_content("Total number of items returned 55579")
 
-    # expect(page).to have_content(10 foods with ingredient "sweet potatoes")
+    foods = FoodFacade.new.search("sweet potatoes")
 
-    expect(page).to have_content(food.code)
-    expect(page).to have_content(food.description)
-    expect(page).to have_content(food.bramd)
-    expect(page).to have_content(food.ingredients)
+    expect(foods.count).to eq(10)
+    expect(page).to have_content(foods.first.code)
+    expect(page).to have_content(foods.first.description)
+    expect(page).to have_content(foods.first.brand)
+    expect(page).to have_content(foods.first.ingredients)
 
   end
 end
